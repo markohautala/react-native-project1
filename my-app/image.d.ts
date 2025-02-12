@@ -1,3 +1,5 @@
+// This is required to import images in TypeScript so that TypeScript knows about the image type.
+
 declare module '*.png' {
   const value: any;
   export default value;

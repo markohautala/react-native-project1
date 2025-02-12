@@ -27,5 +27,5 @@ export default function RootLayout() {
     return null; // Prevent UI from rendering until fonts are loaded
   }
 
-  return <Stack />;
+  return <Stack screenOptions={{ headerShown: false }}/>;
 }
