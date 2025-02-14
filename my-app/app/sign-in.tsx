@@ -18,7 +18,7 @@ const SignIn = () => {
           </Text>
           <Text className="text-2xl font-rubik-bold text-black-300 text-center mt-2">
             Let's Find Your Ideal Dream Home {"\n"}
-            <Text className="text-primary-300">
+            <Text className="text-primary-200">
               Together.
             </Text>
           </Text>
