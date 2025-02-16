@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "React Native Real-estate app",
-    "slug": "React Native Real-estate app",
+    "name": "Peak Properties",
+    "slug": "Peak Properties",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "real-estate",
+    "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
