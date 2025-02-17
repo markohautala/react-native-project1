@@ -11,14 +11,15 @@ const SignIn = () => {
   };
 
   return (
-    <View style={{ flex: 1, backgroundColor: "#fff", padding: 20 }}>
-      <SafeAreaView style={{ flex: 1 }} className="bg-white">
-        <ScrollView
-          contentContainerStyle={{ flexGrow: 1 }}
-        >
+    <SafeAreaView style={{ flex: 1 }} className="bg-white">
+      <ScrollView
+        contentContainerStyle={{ flexGrow: 1 }}
+        showsVerticalScrollIndicator={false}
+      >
+        <View style={{ paddingBottom: 40 }}>
           <Image
             source={images.onboarding}
-            className="w-full h-4/6"
+            style={{ width: "100%", height: undefined, aspectRatio: 0.8 }}
             resizeMode="contain"
           />
           <View className="px-10">
@@ -49,9 +50,9 @@ const SignIn = () => {
               </View>
             </TouchableOpacity>
           </View>
-        </ScrollView>
-      </SafeAreaView>
-    </View>
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
