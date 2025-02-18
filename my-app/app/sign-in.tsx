@@ -26,25 +26,25 @@ const SignIn = () => {
             <Text className="text-base text-center uppercase font-rubik text-black-200">
               Welcome to Peak Properties
             </Text>
-            <Text className="text-2xl font-rubik-bold text-black-300 text-center mt-2">
+            <Text className="text-2xl font-rubik-bold text-black-300 text-center mt-4">
               Let's Find Your Next Dream Home {"\n"}
               <Text className="text-primary-200">Together.</Text>
             </Text>
             <Text className="text-lg font-rubik text-black-200 text-center mt-12">
-              Login to Peak Properties with Your Google
+              Login to Peak Properties with Google
             </Text>
 
             <TouchableOpacity
               onPress={handleLogin}
-              className="bg-white shadow-md shadow-zinc-300 rounded-full w-full py-4 mt-5"
+              className="bg-black shadow-md shadow-zinc-300 w-full py-4 mt-5"
             >
               <View className="flex flex-row items-center justify-center">
                 <Image
                   source={icons.google}
-                  className="w-5 h-5"
+                  className="w-7 h-7"
                   resizeMode="contain"
                 />
-                <Text className="text-lg font-rubik-medium text-black-300 ml-2">
+                <Text className="text-lg font-rubik-medium text-white ml-2">
                   Continue with Google
                 </Text>
               </View>
