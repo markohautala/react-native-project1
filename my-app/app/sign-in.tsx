@@ -13,7 +13,7 @@ const SignIn = () => {
     if (result) {
       console.log("Logged in successfully");
     } else {
-      Alert.alert("Error", "Failed to login with Google");
+      Alert.alert("Error", "Failed to login with Google"); // Title is "Error" and message is "Failed to login with Google"
     }
   };
 

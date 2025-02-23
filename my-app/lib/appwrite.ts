@@ -49,15 +49,11 @@ export async function login() {
 // create logout function
 export async function logout() {
   try {
-
     await account.deleteSession("current");
     return true;
-
   } catch (error) {
-
     console.error(error);
     return false;
-
   }
 }
 
@@ -68,15 +64,12 @@ export async function getCurrentUser() {
     const result = await account.get();
     if (result.$id) {
       const userAvatar = avatar.getInitials(result.name);
-
       return {
         ...result,
         avatar: userAvatar.toString()
       };
     }
-
     return null;
-
   } catch (error) {
     console.error(error);
     return null;
