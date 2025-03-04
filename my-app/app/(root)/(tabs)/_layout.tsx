@@ -1,24 +1,22 @@
-import { View, Text, Image } from "react-native";
+import { View, Text } from "react-native";
 import React from "react";
 import { Tabs } from "expo-router";
-
-import icons from "@/constants/icons";
+import { MaterialIcons } from "@expo/vector-icons";
 
 const TabIcon = ({
   focused,
-  icon,
+  iconName,
   title,
 }: {
   focused: boolean;
-  icon: any;
+  iconName: keyof typeof MaterialIcons.glyphMap;
   title: string;
 }) => (
   <View className="flex-1 mt-1 flex-col items-center">
-    <Image
-      source={icon}
-      tintColor={focused ? "#b3cde4" : "#001b2e"}
-      resizeMode="contain"
-      className="size-7"
+    <MaterialIcons
+      name={iconName as keyof typeof MaterialIcons.glyphMap} // Set the icon name
+      size={27} // Set the size
+      color={focused ? "#b3cde4" : "#001b2e"} // Set the color based on focus
     />
     <Text
       className={`${
@@ -52,7 +50,7 @@ const TabsLayout = () => {
           title: "Home",
           headerShown: false,
           tabBarIcon: ({ focused }) => (
-            <TabIcon focused={focused} icon={icons.home} title="Home"></TabIcon>
+            <TabIcon focused={focused} iconName="home" title="Home" />
           ),
         }}
       />
@@ -62,7 +60,7 @@ const TabsLayout = () => {
           title: "Explore",
           headerShown: false,
           tabBarIcon: ({ focused }) => (
-            <TabIcon focused={focused} icon={icons.search} title="Explore"></TabIcon>
+            <TabIcon focused={focused} iconName="search" title="Explore" />
           ),
         }}
       />
@@ -72,7 +70,7 @@ const TabsLayout = () => {
           title: "Profile",
           headerShown: false,
           tabBarIcon: ({ focused }) => (
-            <TabIcon focused={focused} icon={icons.person} title="Profile"></TabIcon>
+            <TabIcon focused={focused} iconName="person" title="Profile" />
           ),
         }}
       />
