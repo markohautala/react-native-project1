@@ -13,7 +13,9 @@ import FontAwesome from "@expo/vector-icons/FontAwesome";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 import AntDesign from "@expo/vector-icons/AntDesign";
+
 import icons from "@/constants/icons";
+import { settings } from "@/constants/data";
 
 interface settingItemProp {
   iconName: string;
@@ -77,6 +79,14 @@ const Profile = () => {
         <View className="flex flex-col mt-10">
         <SettingsItem iconName="calendar" title="My Bookings" textStyle="text-style-class" showArrow={true} />
         <SettingsItem iconName="wallet" title="Payments" iconLibrary="FontAwesome6" textStyle="text-style-class" showArrow={true} />
+        </View>
+        <View className="flex flex-col mt-5 border-t pt-5 border-primary-200">
+          {settings.slice(2).map((item, index) => (
+            <SettingsItem
+              key={index}
+              {...item}
+            />
+          ))}
         </View>
       </ScrollView>
     </SafeAreaView>
