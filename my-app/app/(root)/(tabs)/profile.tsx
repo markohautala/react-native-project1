@@ -13,11 +13,13 @@ import FontAwesome from "@expo/vector-icons/FontAwesome";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 import AntDesign from "@expo/vector-icons/AntDesign";
+import icons from "@/constants/icons";
 
 interface settingItemProp {
   iconName: string;
   title: string;
   textStyle: string;
+  showArrow?: boolean;
   onPress?: () => void;
   iconLibrary?: "FontAwesome" | "FontAwesome6"; // Added option for FontAwesome6
 }
@@ -27,6 +29,7 @@ const SettingsItem = ({
   title,
   onPress,
   textStyle,
+  showArrow,
   iconLibrary = "FontAwesome", // Default to FontAwesome
 }: settingItemProp) => {
   const IconComponent = iconLibrary === "FontAwesome6" ? FontAwesome6 : FontAwesome;
@@ -35,10 +38,9 @@ const SettingsItem = ({
     <TouchableOpacity className="flex flex-row items-center justify-between py-3" onPress={onPress}>
       <View className="flex flex-row items-center gap-3">
         <IconComponent name={iconName} size={30} color="black" />
-        <Text className={`text-large font-rubik-medium ${textStyle}`}>
-        {title}
-        </Text>
+        <Text className={`text-large font-rubik-medium ${textStyle}`}>{title}</Text>
       </View>
+      {showArrow && <AntDesign name="right" size={24} color="black" />}
     </TouchableOpacity>
   );
 };
@@ -73,8 +75,8 @@ const Profile = () => {
         </View>
 
         <View className="flex flex-col mt-10">
-          <SettingsItem iconName="calendar" title="My Bookings" textStyle="text-style-class" />
-          <SettingsItem iconName="wallet" title="Payments" iconLibrary="FontAwesome6" textStyle="text-style-class" />
+        <SettingsItem iconName="calendar" title="My Bookings" textStyle="text-style-class" showArrow={true} />
+        <SettingsItem iconName="wallet" title="Payments" iconLibrary="FontAwesome6" textStyle="text-style-class" showArrow={true} />
         </View>
       </ScrollView>
     </SafeAreaView>
