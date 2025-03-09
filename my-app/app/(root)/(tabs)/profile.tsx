@@ -12,34 +12,33 @@ import images from "@/constants/images";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
+import Octicons from '@expo/vector-icons/Octicons';
 import AntDesign from "@expo/vector-icons/AntDesign";
 
-import icons from "@/constants/icons";
 import { settings } from "@/constants/data";
 
-interface settingItemProp {
-  iconName: string;
+interface SettingItemProps {
+  icon: JSX.Element;
   title: string;
   textStyle: string;
   showArrow?: boolean;
   onPress?: () => void;
-  iconLibrary?: "FontAwesome" | "FontAwesome6"; // Added option for FontAwesome6
 }
 
 const SettingsItem = ({
-  iconName,
+  icon,
   title,
   onPress,
   textStyle,
   showArrow,
-  iconLibrary = "FontAwesome", // Default to FontAwesome
-}: settingItemProp) => {
-  const IconComponent = iconLibrary === "FontAwesome6" ? FontAwesome6 : FontAwesome;
-
+}: SettingItemProps) => {
   return (
-    <TouchableOpacity className="flex flex-row items-center justify-between py-3" onPress={onPress}>
+    <TouchableOpacity
+      className="flex flex-row items-center justify-between py-3"
+      onPress={onPress}
+    >
       <View className="flex flex-row items-center gap-3">
-        <IconComponent name={iconName} size={30} color="black" />
+        {icon} {/* Icon rendered correctly */}
         <Text className={`text-large font-rubik-medium ${textStyle}`}>{title}</Text>
       </View>
       {showArrow && <AntDesign name="right" size={24} color="black" />}
@@ -50,15 +49,23 @@ const SettingsItem = ({
 const Profile = () => {
   return (
     <SafeAreaView className="h-full bg-white">
-      <ScrollView showsVerticalScrollIndicator={false} contentContainerClassName="pb-32 px-7">
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerClassName="pb-32 px-7"
+      >
+        {/* Header */}
         <View className="flex flex-row justify-between items-center mt-3">
           <Text className="text-xl font-rubik-medium">Profile</Text>
-          <AntDesign name="bells" size={24} color="#001b2e" />
+          <Octicons name="bell" size={24} color="black" />
         </View>
 
+        {/* Profile Section */}
         <View className="flex flex-row justify-center items-center mt-5">
           <View className="flex flex-col items-center relative mt-5">
-            <Image source={images.avatar} className="size-44 relative rounded-full" />
+            <Image
+              source={images.avatar}
+              className="size-44 relative rounded-full"
+            />
             <TouchableOpacity
               className="absolute bottom-16 right-1"
               style={{
@@ -70,23 +77,43 @@ const Profile = () => {
                 alignItems: "center",
               }}
             >
-              <FontAwesome5 name="edit" size={24} color="#001b2e" />
+              <FontAwesome5 name="edit" size={24} color="black" />
             </TouchableOpacity>
             <Text className="text-xl font-rubik-medium mt-2">Name here</Text>
           </View>
         </View>
 
+        {/* Settings List */}
         <View className="flex flex-col mt-10">
-        <SettingsItem iconName="calendar" title="My Bookings" textStyle="text-style-class" showArrow={true} />
-        <SettingsItem iconName="wallet" title="Payments" iconLibrary="FontAwesome6" textStyle="text-style-class" showArrow={true} />
+          {/* My Bookings */}
+          <SettingsItem
+            icon={<FontAwesome name="calendar" size={24} color="black" />}
+            title="My Bookings"
+            textStyle="text-style-class"
+            showArrow={true}
+          />
+          {/* Payments */}
+          <SettingsItem
+            icon={<FontAwesome5 name="wallet" size={24} color="black" />}
+            title="Payments"
+            textStyle="text-style-class"
+            showArrow={true}
+          />
         </View>
+
+        {/* Other Settings */}
         <View className="flex flex-col mt-5 border-t pt-5 border-primary-200">
-          {settings.slice(2).map((item, index) => (
-            <SettingsItem
-              key={index}
-              {...item}
-            />
-          ))}
+          {settings.map((item, index) => {
+            return (
+              <SettingsItem
+                key={index}
+                icon={item.icon} // Directly using the icon JSX.Element
+                title={item.title}
+                textStyle="text-style-class"
+                showArrow={true}
+              />
+            );
+          })}
         </View>
       </ScrollView>
     </SafeAreaView>

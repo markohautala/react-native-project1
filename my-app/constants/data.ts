@@ -1,5 +1,6 @@
 import icons from "./icons";
 import images from "./images";
+import { vectorIcons } from "./vectoricons";
 
 export const cards = [
   {
@@ -69,36 +70,28 @@ export const categories = [
 
 export const settings = [
   {
-    title: "My Bookings",
-    icon: icons.calendar,
-  },
-  {
-    title: "Payments",
-    icon: icons.wallet,
-  },
-  {
     title: "Profile",
-    icon: icons.person,
+    icon: vectorIcons.profile,
   },
   {
     title: "Notifications",
-    icon: icons.bell,
+    icon: vectorIcons.notifications,
   },
   {
     title: "Security",
-    icon: icons.shield,
+    icon: vectorIcons.security,
   },
   {
     title: "Language",
-    icon: icons.language,
+    icon: vectorIcons.language,
   },
   {
     title: "Help Center",
-    icon: icons.info,
+    icon: vectorIcons.helpCenter,
   },
   {
     title: "Invite Friends",
-    icon: icons.people,
+    icon: vectorIcons.inviteFriends,
   },
 ];
 
