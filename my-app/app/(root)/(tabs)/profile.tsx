@@ -11,7 +11,7 @@ import images from "@/constants/images";
 
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
-import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import Octicons from '@expo/vector-icons/Octicons';
 import AntDesign from "@expo/vector-icons/AntDesign";
 
@@ -114,6 +114,14 @@ const Profile = () => {
               />
             );
           })}
+        </View>
+        <View className="flex flex-col mt-5 border-t pt-5 border-primary-200">
+          <SettingsItem
+              icon={<MaterialIcons name="logout" size={24} color="#F75555" />}
+              title="Logout"
+              textStyle="text-danger"
+              showArrow={false}
+            />
         </View>
       </ScrollView>
     </SafeAreaView>
