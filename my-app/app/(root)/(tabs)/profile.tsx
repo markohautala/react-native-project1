@@ -4,6 +4,7 @@ import {
   ScrollView,
   Image,
   TouchableOpacity,
+  Alert,
 } from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -16,6 +17,8 @@ import Octicons from '@expo/vector-icons/Octicons';
 import AntDesign from "@expo/vector-icons/AntDesign";
 
 import { settings } from "@/constants/data";
+import { useGlobalContext } from "@/lib/global-provider";
+import { logout } from "@/lib/appwrite";
 
 interface SettingItemProps {
   icon: JSX.Element;
@@ -47,6 +50,19 @@ const SettingsItem = ({
 };
 
 const Profile = () => {
+  const { user, refetch } = useGlobalContext();
+
+  const handleLogout = async () => {
+    const result = await logout();
+
+    if (result) {
+      Alert.alert("Success", "Logged out successfully");
+      refetch({});
+    } else {
+      Alert.alert("Error", "Failed to logout");
+    }
+  }
+
   return (
     <SafeAreaView className="h-full bg-white">
       <ScrollView
@@ -63,7 +79,7 @@ const Profile = () => {
         <View className="flex flex-row justify-center items-center mt-5">
           <View className="flex flex-col items-center relative mt-5">
             <Image
-              source={images.avatar}
+              source={{ uri: user?.avatar }}
               className="size-44 relative rounded-full"
             />
             <TouchableOpacity
@@ -79,7 +95,7 @@ const Profile = () => {
             >
               <FontAwesome5 name="edit" size={24} color="black" />
             </TouchableOpacity>
-            <Text className="text-xl font-rubik-medium mt-2">Name here</Text>
+            <Text className="text-xl font-rubik-medium mt-2">{user?.name}</Text>
           </View>
         </View>
 
@@ -121,6 +137,7 @@ const Profile = () => {
               title="Logout"
               textStyle="text-danger"
               showArrow={false}
+              onPress={handleLogout}
             />
         </View>
       </ScrollView>
