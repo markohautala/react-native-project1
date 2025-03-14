@@ -1,7 +1,9 @@
 import React from "react";
 import images from "@/constants/images";
 import { Image, SafeAreaView, Text, View } from "react-native";
-import { vectorIcons } from "@/constants/vectoricons";
+import Octicons from '@expo/vector-icons/Octicons';
+import Search from "@/components/Search";
+
 
 export default function Index() {
   return (
@@ -15,9 +17,10 @@ export default function Index() {
               <Text className="text-large text-black-300 font-rubik-medium">Marko</Text>
             </View>
           </View>
-          {vectorIcons.notifications}
+          <Octicons name="bell" size={24} color="black" />
         </View>
       </View>
+      <Search />
     </SafeAreaView>
   );
 }
