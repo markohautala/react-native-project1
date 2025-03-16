@@ -2,8 +2,9 @@ import { View, TextInput } from 'react-native'
 import React from 'react'
 import { router, useLocalSearchParams, usePathname } from 'expo-router'
 import AntDesign from '@expo/vector-icons/AntDesign';
-import Octicons from '@expo/vector-icons/Octicons';
 import { useDebouncedCallback } from 'use-debounce'
+import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
+
 
 
 
@@ -34,14 +35,14 @@ const Search = () => {
   return (
     <View className='flex flex-row items-center justify-between w-full px-4 mt-4 bg-white border border-gray-200 h-10'>
       <View className='flex flex-1 flex-row items-center justify-start z-50'>
-        <AntDesign name="search1" size={20} color="black" />
+        <AntDesign name="search1" size={20} color="gray" />
         <TextInput
           value={search}
           onChangeText={handleSearch}
           placeholder='Search for anything'
           className='text-m font-rubik h-10 text-black-300 ml-3 flex-1'
         />
-        <Octicons name="filter" size={20} color="black" />
+        <FontAwesome6 name="sliders" size={20} color="gray" />
       </View>
     </View>
   )
