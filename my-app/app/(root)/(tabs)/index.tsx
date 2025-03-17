@@ -42,12 +42,11 @@ export default function Index() {
             </TouchableOpacity>
           </View>
         </View>
+
+        <FeaturedCards />
+
+        <Cards />
       </View>
-
-      <FeaturedCards />
-      
-      <Cards />
-
     </SafeAreaView>
   );
 }
