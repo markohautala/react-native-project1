@@ -8,6 +8,7 @@ import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 
 interface Props {
   onBtnClick?: () => void;
+  onPress?: () => void;
 }
 
 export const FeaturedCards = ({ onBtnClick }: Props) => {
@@ -35,10 +36,26 @@ export const FeaturedCards = ({ onBtnClick }: Props) => {
   );
 };
 
-export const Cards = () => {
+export const Cards = ({ onPress }: Props) => {
   return (
-    <View>
-      <Text>Cards</Text>
-    </View>
+    <TouchableOpacity onPress={onPress} className="flex-1 w-full mt-4 py-4 rounded-lg bg-white shadow-lg relative shadow-black-100/70">
+      <View className="flex flex-row items-center absolute px-2 top-5 right-5 bg-white/65 p-1 rounded-full z-50">
+        <AntDesign name="star" size={24} color="#537692" />
+        <Text className="text-primary-300 font-rubik-bold ml-1">4.4</Text>
+      </View>
+
+      <Image source={images.newYork} className="w-full h-40 rounded-lg"/>
+
+      <View className="flex flex-col mt-2">
+        <Text className="text-black-300 font-rubik-bold text-base">New York</Text>
+        <Text className="text-black-200 font-rubik text-xs" numberOfLines={1}>Vega | Brf Juno</Text>
+        <Text className="text-white font-rubik text-sm" numberOfLines={1}>2 895 000 kr</Text>
+        <View className="absolute bottom-1 right-1">
+
+          <FontAwesome6 name="heart" size={24} color="white" />
+
+        </View>
+      </View>
+    </TouchableOpacity>
   );
 };
