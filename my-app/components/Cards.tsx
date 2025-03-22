@@ -38,10 +38,10 @@ export const FeaturedCards = ({ onBtnClick }: Props) => {
 
 export const Cards = ({ onPress }: Props) => {
   return (
-    <TouchableOpacity onPress={onPress} className="flex-1 w-full mt-4 py-4 rounded-lg bg-white shadow-lg relative shadow-black-100/70">
-      <View className="flex flex-row items-center absolute px-2 top-5 right-5 bg-white/65 p-1 rounded-full z-50">
-        <AntDesign name="star" size={24} color="#537692" />
-        <Text className="text-primary-300 font-rubik-bold ml-1">4.4</Text>
+    <TouchableOpacity onPress={onPress} className="flex-1 w-full mt-2 px-2 py-2 rounded-lg bg-white shadow-lg relative shadow-black-100/70">
+      <View className="flex flex-row items-center absolute px-1 top-3 right-3 bg-white/65 p-0.5 rounded-full z-50">
+        <AntDesign name="star" size={16} color="#537692" />
+        <Text className="text-primary-300 font-rubik-bold ml-0.5 text-xs">4.4</Text>
       </View>
 
       <Image source={images.newYork} className="w-full h-40 rounded-lg"/>

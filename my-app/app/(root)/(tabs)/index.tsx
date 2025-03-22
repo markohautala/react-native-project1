@@ -63,7 +63,7 @@ export default function Index() {
             </TouchableOpacity>
           </View>
 
-          <View className="flex flex-row gap-5 mt-5">
+          <View className="flex flex-row gap-5 m-5">
             <Cards />
             <Cards />
           </View>
