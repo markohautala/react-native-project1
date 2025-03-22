@@ -11,12 +11,13 @@ import {
 import Octicons from "@expo/vector-icons/Octicons";
 import Search from "@/components/Search";
 import { Cards, FeaturedCards } from "@/components/Cards";
+import Filters from "@/components/Filters";
 
 export default function Index() {
   return (
     <ScrollView>
       <SafeAreaView className="bg-white h-full">
-        <View className="px-5">
+        <View className="px-3">
           <View className="flex flex-row justify-between items-center mt-5">
             <View className="flex flex-row items-center">
               <Image source={images.avatar} className="size-12 rounded-full" />
@@ -52,7 +53,7 @@ export default function Index() {
             <FeaturedCards />
           </View>
 
-          <View className="flex flex-row justify-between items-center">
+          <View className="flex flex-row my-3 justify-between items-center">
             <Text className="text-xl font-rubik-bold text-black-300">
               Our top picks
             </Text>
@@ -62,6 +63,8 @@ export default function Index() {
               </Text>
             </TouchableOpacity>
           </View>
+
+          <Filters />
 
           <View className="flex flex-row gap-5 m-5">
             <Cards />
