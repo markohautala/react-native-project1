@@ -47,12 +47,12 @@ export const Cards = ({ onPress }: Props) => {
       <Image source={images.newYork} className="w-full h-40 rounded-lg"/>
 
       <View className="flex flex-col mt-2">
-        <Text className="text-black-300 font-rubik-bold text-base">New York</Text>
-        <Text className="text-black-200 font-rubik text-xs">Vega | Brf Juno</Text>
-        <Text className="text-black font-rubik text-sm">2 895 000 kr</Text>
+        <Text className="text-black-200 font-rubik-semibold text-base" numberOfLines={1}>New York</Text>
+        <Text className="text-black-200 font-rubik text-xs" numberOfLines={1}>Vega | Brf Juno</Text>
+        <Text className="text-black-200 font-rubik-bold text-sm" numberOfLines={1}>2 895 000 kr</Text>
         <View className="absolute bottom-1 right-1">
 
-          <FontAwesome6 name="heart" size={24} color="white" />
+          <FontAwesome6 name="heart" size={20} color="grey" />
 
         </View>
       </View>
