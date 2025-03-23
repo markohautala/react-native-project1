@@ -1,9 +1,9 @@
 import React from "react";
 import images from "@/constants/images";
 import {
+  FlatList,
   Image,
   SafeAreaView,
-  ScrollView,
   Text,
   TouchableOpacity,
   View,
@@ -15,8 +15,10 @@ import Filters from "@/components/Filters";
 
 export default function Index() {
   return (
-    <ScrollView>
-      <SafeAreaView className="bg-white h-full">
+    <SafeAreaView className="bg-white h-full">
+      <FlatList
+        data={[1, 2, 3, 4]}
+        renderItem={({item})=><Cards />}/>
         <View className="px-3">
           <View className="flex flex-row justify-between items-center mt-5">
             <View className="flex flex-row items-center">
@@ -70,9 +72,7 @@ export default function Index() {
             <Cards />
             <Cards />
           </View>
-
         </View>
-      </SafeAreaView>
-    </ScrollView>
+    </SafeAreaView>
   );
 }
