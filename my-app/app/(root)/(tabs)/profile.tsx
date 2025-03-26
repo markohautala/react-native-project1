@@ -42,7 +42,7 @@ const SettingsItem = ({
     >
       <View className="flex flex-row items-center gap-3">
         {icon} {/* Icon rendered correctly */}
-        <Text className={`text-large font-rubik-medium ${textStyle}`}>{title}</Text>
+      <Text className={`text-large font-rubik-medium ${textStyle}`}>{title}</Text>
       </View>
       {showArrow && <AntDesign name="right" size={24} color="black" />}
     </TouchableOpacity>

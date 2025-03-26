@@ -1,6 +1,7 @@
 import React from "react";
 import images from "@/constants/images";
 import {
+  Button,
   FlatList,
   Image,
   SafeAreaView,
