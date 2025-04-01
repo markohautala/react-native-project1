@@ -14,6 +14,7 @@ import Search from "@/components/Search";
 import { Cards, FeaturedCards } from "@/components/Cards";
 import Filters from "@/components/Filters";
 import { useGlobalContext } from "@/lib/global-provider";
+import seed from "@/lib/seed";
 
 export default function Index() {
 
@@ -21,6 +22,7 @@ export default function Index() {
 
   return (
     <SafeAreaView className="bg-white h-full">
+      <Button title="Seed here" onPress={seed}/>
       <FlatList
         data={[]}
         renderItem={null}
