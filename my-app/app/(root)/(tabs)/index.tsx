@@ -1,21 +1,19 @@
 import React, { useEffect } from "react";
-import images from "@/constants/images";
 import {
   Button,
   FlatList,
   Image,
-  SafeAreaView,
   Text,
   TouchableOpacity,
   View,
 } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import Octicons from "@expo/vector-icons/Octicons";
 import Search from "@/components/Search";
 import { Cards, FeaturedCards } from "@/components/Cards";
 import Filters from "@/components/Filters";
 import { useGlobalContext } from "@/lib/global-provider";
-import seed from "@/lib/seed";
-import { useLocalSearchParams } from "expo-router";
+import { router, useLocalSearchParams } from "expo-router";
 import { useAppwrite } from "@/lib/useAppwrite";
 import { getLatestProperties, getProperties } from "@/lib/appwrite";
 
@@ -23,12 +21,21 @@ export default function Index() {
   const { user } = useGlobalContext();
   const params = useLocalSearchParams<{ query?: string; filter?: string }>();
 
-  const { refetch } = useAppwrite({
+  const { data: latestProperties, loading: latestPropertiesLoading } =
+  useAppwrite({
+    fn: getLatestProperties,
+  });
+
+  const {
+    data: properties,
+    refetch,
+    loading,
+  } = useAppwrite({
     fn: getProperties,
     params: {
       filter: params.filter!,
       query: params.query!,
-      limit: 10,
+      limit: 6,
     },
     skip: true,
   });
@@ -37,17 +44,25 @@ export default function Index() {
     refetch({
       filter: params.filter!,
       query: params.query!,
-      limit: 10,
+      limit: 6,
     });
   }, [params.filter, params.query]);
+
+  // Pushes to the specific property page upon clicking the card
+  const handleCardPress = (id: string) => router.push(`/properties/${id}`);
 
 
   return (
     <SafeAreaView className="bg-white h-full">
-      <Button title="Seed here" onPress={seed} />
       <FlatList
         data={properties}
-        renderItem={null}
+        renderItem={({ item }) => (
+          <Cards
+            item={item}
+            onPress={() => handleCardPress(item.$id)}
+          />
+        )}
+        keyExtractor={(item) => item.$id}
         contentContainerClassName="pb-20"
         showsVerticalScrollIndicator={false}
         ListHeaderComponent={
@@ -90,7 +105,12 @@ export default function Index() {
                 data={latestProperties} // Example data array
                 horizontal
                 keyExtractor={(item, index) => index.toString()}
-                renderItem={() => <FeaturedCards />}
+                renderItem={({ item }) => (
+                  <FeaturedCards
+                    item={item}
+                    onPress={() => handleCardPress(item.$id)}
+                  />
+                )}
                 contentContainerStyle={{ gap: 20, paddingHorizontal: 10 }}
                 showsHorizontalScrollIndicator={false}
                 bounces={false}
@@ -110,10 +130,6 @@ export default function Index() {
 
             <Filters />
 
-            <View className="flex flex-row gap-5 m-5">
-              <Cards />
-              <Cards />
-            </View>
             <View className="flex flex-row gap-5 m-5">
               <Cards />
               <Cards />
