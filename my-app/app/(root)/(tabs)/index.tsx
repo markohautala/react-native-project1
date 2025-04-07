@@ -22,9 +22,9 @@ export default function Index() {
   const params = useLocalSearchParams<{ query?: string; filter?: string }>();
 
   const { data: latestProperties, loading: latestPropertiesLoading } =
-  useAppwrite({
-    fn: getLatestProperties,
-  });
+    useAppwrite({
+      fn: getLatestProperties,
+    });
 
   const {
     data: properties,
@@ -48,19 +48,17 @@ export default function Index() {
     });
   }, [params.filter, params.query]);
 
+  console.log("🔍 Properties data:", properties);
+
   // Pushes to the specific property page upon clicking the card
   const handleCardPress = (id: string) => router.push(`/properties/${id}`);
-
 
   return (
     <SafeAreaView className="bg-white h-full">
       <FlatList
         data={properties}
         renderItem={({ item }) => (
-          <Cards
-            item={item}
-            onPress={() => handleCardPress(item.$id)}
-          />
+          <Cards item={item} onPress={() => handleCardPress(item.$id)} />
         )}
         keyExtractor={(item) => item.$id}
         contentContainerClassName="pb-20"
@@ -129,11 +127,6 @@ export default function Index() {
             </View>
 
             <Filters />
-
-            <View className="flex flex-row gap-5 m-5">
-              <Cards />
-              <Cards />
-            </View>
           </View>
         }
       />
