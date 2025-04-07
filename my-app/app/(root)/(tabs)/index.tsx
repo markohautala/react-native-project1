@@ -48,8 +48,6 @@ export default function Index() {
     });
   }, [params.filter, params.query]);
 
-  console.log("🔍 Properties data:", properties);
-
   // Pushes to the specific property page upon clicking the card
   const handleCardPress = (id: string) => router.push(`/properties/${id}`);
 

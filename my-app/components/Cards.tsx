@@ -27,7 +27,7 @@ export const FeaturedCards = ({ item: { image, rating, name, address, price }, o
       <View className="flex flex-col absolute items-start bottom-4 inset-x-4">
         <Text className="text-white font-rubik-extrabold text-xl" numberOfLines={1}>{name}</Text>
         <Text className="text-white font-rubik text-sm" numberOfLines={1}>{address}</Text>
-        <Text className="text-white font-rubik text-sm" numberOfLines={1}>{price} $</Text>
+        <Text className="text-white font-rubik text-sm" numberOfLines={1}>${price}</Text>
         <View className="absolute bottom-0 right-1">
           <FontAwesome6 name="heart" size={24} color="white" />
         </View>
@@ -39,21 +39,21 @@ export const FeaturedCards = ({ item: { image, rating, name, address, price }, o
 
 export const Cards = ({ item: { image, rating, name, address, price }, onPress }: Props) => {
   return (
-    <TouchableOpacity onPress={onPress} className="flex-1 m-4 px-3 py-4 rounded-lg bg-white shadow-lg shadow-black-100/70">
-      <View className="flex flex-row items-center absolute px-1 top-3 right-3 bg-white/65 p-0.5 rounded-full z-50">
+    <TouchableOpacity onPress={onPress} className="flex-1 m-4 px-2.5 py-2.5 rounded-lg bg-white shadow-lg shadow-black-100/50">
+      <View className="flex flex-row items-center absolute px-2.5 top-5 right-5 bg-white/70 p-0.5 rounded-full z-50">
         <AntDesign name="star" size={16} color="#537692" />
         <Text className="text-primary-300 font-rubik-bold ml-0.5 text-xs">{rating}</Text>
       </View>
 
-      <Image source={{ uri: image }} className="w-full h-40 rounded-lg"/>
+      <Image source={{ uri: image }} className="w-full h-56 rounded-md"/>
 
       <View className="flex flex-col mt-2">
         <Text className="text-black-200 font-rubik-semibold text-base" numberOfLines={1}>{name}</Text>
         <Text className="text-black-200 font-rubik text-xs" numberOfLines={1}>{address}</Text>
-        <Text className="text-black-200 font-rubik-bold text-sm" numberOfLines={1}>{price} $</Text>
+        <Text className="text-black-200 font-rubik-bold text-sm" numberOfLines={1}>${price}</Text>
         <View className="absolute bottom-0 right-1">
 
-          <FontAwesome6 name="heart" size={20} color="grey" />
+          <FontAwesome6 name="heart" size={22} color="grey" />
 
         </View>
       </View>
