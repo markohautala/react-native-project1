@@ -5,8 +5,6 @@ import AntDesign from '@expo/vector-icons/AntDesign';
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 import { Models } from "react-native-appwrite";
 
-
-
 interface Props {
   item: Models.Document;
   onPress?: () => void;
@@ -32,7 +30,6 @@ export const FeaturedCards = ({ item: { image, rating, name, address, price }, o
           <FontAwesome6 name="heart" size={24} color="white" />
         </View>
       </View>
-
     </TouchableOpacity>
   );
 };

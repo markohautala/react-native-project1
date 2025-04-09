@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import {
+  ActivityIndicator,
   Button,
   FlatList,
   Image,
@@ -16,6 +17,7 @@ import { useGlobalContext } from "@/lib/global-provider";
 import { router, useLocalSearchParams } from "expo-router";
 import { useAppwrite } from "@/lib/useAppwrite";
 import { getLatestProperties, getProperties } from "@/lib/appwrite";
+import NoResults from "@/components/NoResults";
 
 export default function Index() {
   const { user } = useGlobalContext();
@@ -61,6 +63,18 @@ export default function Index() {
         keyExtractor={(item) => item.$id}
         contentContainerClassName="pb-20"
         showsVerticalScrollIndicator={false}
+        ListEmptyComponent={
+          loading ? (
+            <ActivityIndicator
+              size="large"
+              color="#000000"
+              className="flex-1 justify-center items-center"
+              style={{ height: "100%" }}
+            />
+          ) : (
+            <NoResults />
+          )
+        }
         ListHeaderComponent={
           <View className="px-3">
             <View className="flex flex-row justify-between items-center mt-5">
