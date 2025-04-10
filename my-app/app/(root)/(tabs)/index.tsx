@@ -68,7 +68,7 @@ export default function Index() {
             <ActivityIndicator
               size="large"
               color="#000000"
-              className="flex-1 justify-center items-center"
+              className="flex-1 mt-20 justify-center items-center"
               style={{ height: "100%" }}
             />
           ) : (
@@ -111,20 +111,30 @@ export default function Index() {
             </View>
 
             <View className="mt-1">
-              <FlatList
-                data={latestProperties} // Example data array
-                horizontal
-                keyExtractor={(item, index) => index.toString()}
-                renderItem={({ item }) => (
-                  <FeaturedCards
-                    item={item}
-                    onPress={() => handleCardPress(item.$id)}
-                  />
-                )}
-                contentContainerStyle={{ gap: 20, paddingHorizontal: 10 }}
-                showsHorizontalScrollIndicator={false}
-                bounces={false}
-              />
+              {latestPropertiesLoading ? (
+                <ActivityIndicator
+                  size="large"
+                  color="#000000"
+                  className="text-primary-300"
+                />
+              ) : !latestProperties || latestProperties?.length === 0 ? (
+                <NoResults />
+              ) : (
+                <FlatList
+                  data={latestProperties} // Example data array
+                  horizontal
+                  keyExtractor={(item, index) => index.toString()}
+                  renderItem={({ item }) => (
+                    <FeaturedCards
+                      item={item}
+                      onPress={() => handleCardPress(item.$id)}
+                    />
+                  )}
+                  contentContainerStyle={{ gap: 20, paddingHorizontal: 10 }}
+                  showsHorizontalScrollIndicator={false}
+                  bounces={false}
+                />
+              )}
             </View>
 
             <View className="flex flex-row my-3 justify-between items-center">
