@@ -17,7 +17,7 @@ const SignIn = () => {
     const result = await login();
 
     if (result) {
-      refetch();
+      refetch({}); // Pass an empty object or appropriate parameters as required
     } else {
       Alert.alert("Error", "Failed to login with Google"); // Title is "Error" and message is "Failed to login with Google"
     }
