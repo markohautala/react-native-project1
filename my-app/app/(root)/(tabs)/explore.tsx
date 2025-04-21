@@ -71,6 +71,9 @@ export default function Explore() {
         }
         ListHeaderComponent={
           <View className="px-5">
+            <View>
+              <Text className="font-rubik-medium mt-3 text-center text-black-300">Search for Your Ideal Home</Text>
+            </View>
             <Search />
             <View className="mt-5">
               <Filters />
