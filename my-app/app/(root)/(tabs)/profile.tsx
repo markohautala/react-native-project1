@@ -19,11 +19,13 @@ import AntDesign from "@expo/vector-icons/AntDesign";
 import { settings } from "@/constants/data";
 import { useGlobalContext } from "@/lib/global-provider";
 import { logout } from "@/lib/appwrite";
+import { TextStyle } from "react-native";
+
 
 interface SettingItemProps {
   icon: JSX.Element;
   title: string;
-  textStyle: string;
+  textStyle?: TextStyle;
   showArrow?: boolean;
   onPress?: () => void;
 }
@@ -37,12 +39,14 @@ const SettingsItem = ({
 }: SettingItemProps) => {
   return (
     <TouchableOpacity
-      className="flex flex-row items-center justify-between py-3"
+      className="flex-row items-center justify-between py-3"
       onPress={onPress}
     >
-      <View className="flex flex-row items-center gap-3">
-        {icon} {/* Icon rendered correctly */}
-      <Text className={`text-large font-rubik-medium ${textStyle}`}>{title}</Text>
+      <View className="flex-row items-center gap-3">
+        {icon}
+        <Text className="text-large font-rubik-medium" style={textStyle}>
+          {title}
+        </Text>
       </View>
       {showArrow && <AntDesign name="right" size={24} color="black" />}
     </TouchableOpacity>
@@ -105,14 +109,14 @@ const Profile = () => {
           <SettingsItem
             icon={<FontAwesome name="calendar" size={24} color="black" />}
             title="My Bookings"
-            textStyle="text-style-class"
+            textStyle={{ color: "black" }} // ✅ now this works correctly
             showArrow={true}
           />
           {/* Payments */}
           <SettingsItem
             icon={<FontAwesome5 name="wallet" size={24} color="black" />}
             title="Payments"
-            textStyle="text-style-class"
+            textStyle={{ color: "black" }}
             showArrow={true}
           />
         </View>
@@ -123,22 +127,22 @@ const Profile = () => {
             return (
               <SettingsItem
                 key={index}
-                icon={item.icon} // Directly using the icon JSX.Element
+                icon={item.icon}
                 title={item.title}
-                textStyle="text-style-class"
+                textStyle={{ color: "black" }}
                 showArrow={true}
               />
             );
           })}
         </View>
         <View className="flex flex-col mt-5 border-t pt-5 border-primary-200">
-          <SettingsItem
-              icon={<MaterialIcons name="logout" size={24} color="#F75555" />}
-              title="Logout"
-              textStyle="text-danger"
-              showArrow={false}
-              onPress={handleLogout}
-            />
+        <SettingsItem
+          icon={<MaterialIcons name="logout" size={24} color="#F75555" />}
+          title="Logout"
+          textStyle={{ color: "#F75555" }} // ✅ style for text
+          showArrow={false}
+          onPress={handleLogout}
+        />
         </View>
       </ScrollView>
     </SafeAreaView>
